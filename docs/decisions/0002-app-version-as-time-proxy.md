@@ -53,6 +53,42 @@ one.
   (version release history), and still cannot handle edits. More machinery, same
   uncertainty.
 
+## Measured on the first real pull (2026-09-14)
+
+`app_version` coverage came back at **100%** — all 2500 reviews carry one. The
+worry that drove the "exclude nulls rather than impute" rule did not
+materialise on this corpus, and the denominator is the whole corpus.
+
+**But the spread is heavily concentrated, which bounds what the proxy can do.**
+22 distinct versions appear, and roughly 1900 of 2500 reviews (~76%) sit in just
+three consecutive builds:
+
+| version | reviews |
+|---|---|
+| 7.139.0 | 869 |
+| 7.137.0 | 531 |
+| 7.138.0 | 493 |
+| 7.136.0 | 128 |
+| 7.135.2 | 79 |
+
+The remaining ~17 versions share a long, thin tail.
+
+This is expected — the feed is sorted `mostrecent`, so it samples whatever was
+current — but it has a direct consequence:
+
+**Release-over-release analysis is viable across roughly the four or five most
+recent builds only. It cannot support long-range trends.** A chart comparing
+7.139.0 against 7.137.0 rests on hundreds of reviews per side and is sound. A
+chart reaching back to 7.79.0 rests on single digits and is noise wearing the
+costume of a trend.
+
+Anything below a floor of ~50 reviews for a version should not be plotted as a
+point. The tail is for spot-checking individual reviews, not for comparison.
+
+Note this is a *different* limitation from the `created_at` problem above.
+`created_at` is unsound at any scale; `app_version` is sound but has a short
+usable range. One is a correctness problem, the other a sample-size problem.
+
 ## Consequences
 
 - Phase 4 "trending" analysis is keyed on app version, and its x-axis is versions, not
