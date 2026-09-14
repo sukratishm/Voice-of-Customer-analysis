@@ -1,0 +1,53 @@
+{
+  "snapshot": "duolingo-apple-20260914.jsonl",
+  "created_at": "2026-09-14T21:57:50.313736+00:00",
+  "review_count": 2500,
+  "sha256": "5b93a6b64c602677a464cf4faa2b736265de0e8214bdc2e9e6991752347eabf5",
+  "bytes": 3061096,
+  "schema_version": 1,
+  "source": {
+    "app_name": "Duolingo",
+    "app_slug": "duolingo",
+    "apple_app_id": "570060128",
+    "countries": [
+      "us",
+      "gb",
+      "ca",
+      "au",
+      "in"
+    ],
+    "max_pages": 10
+  },
+  "by_country": {
+    "us": 500,
+    "gb": 500,
+    "ca": 500,
+    "au": 500,
+    "in": 500
+  },
+  "rating_distribution": {
+    "1": 482,
+    "2": 145,
+    "3": 222,
+    "4": 336,
+    "5": 1315
+  },
+  "app_version_coverage": {
+    "reviews_with_app_version": 2500,
+    "reviews_without_app_version": 0,
+    "coverage_pct": 100.0
+  },
+  "notes": {
+    "created_at_field": "Apple exposes only a last-updated timestamp. Not safe for trend analysis - use app_version as the time proxy. See ADR 0002.",
+    "row_order": "sorted by (country, id) for a reproducible checksum"
+  },
+  "ingest_report": {
+    "entries_seen": 2500,
+    "reviews_kept": 2500,
+    "total_dropped": 0,
+    "drops": {},
+    "field_gaps": {},
+    "cross_country_duplicate_ids": [],
+    "reconciles": true
+  }
+}
