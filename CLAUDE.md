@@ -112,6 +112,11 @@ First real pull: 2500 reviews, 500 from each of us/gb/ca/au/in, zero dropped.
   end-of-data. Raising `max_pages` to 12 tests it for ~10 extra requests. See
   ADR 0003.
 
+- **Length does not separate signal from sentiment.** A length gate was
+  proposed, measured, and rejected — 2- and 3-star reviews turn out to be the
+  densest signal in the corpus, and titles carry content that bodies lack. The
+  gate for phase 2 is classification, not length. See ADR 0004.
+
 Single-source for the MVP is a deliberate, revisitable choice — see
 `docs/decisions/0001-single-source-mvp.md`.
 
