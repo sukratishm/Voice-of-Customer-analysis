@@ -1,0 +1,13 @@
+# Cached HTTP responses. Disposable — deleting this only costs a re-fetch.
+data/raw/
+
+# Snapshots are the committed corpus. Do NOT ignore them.
+!data/snapshots/
+
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.DS_Store
+.pytest_cache/
