@@ -93,6 +93,25 @@ https://itunes.apple.com/{country}/rss/customerreviews/page={n}/id={appId}/sortb
   the normal end-of-data signal, not an error.
 - Apple can return 403 to a request with no `User-Agent`. Always send one.
 
+### Measured against the live feed, 2026-09-14
+
+First real pull: 2500 reviews, 500 from each of us/gb/ca/au/in, zero dropped.
+
+- **Review ids are globally unique** — zero cross-storefront duplicates across
+  2500 reviews. Dedupe on id alone is now measured, not inferred.
+- **No duplicates at all**, even within a storefront. With `sortby=mostrecent`,
+  the ten pages did not overlap.
+- **`app_version` coverage was 100%**, but concentrated: ~76% of the corpus sits
+  in three consecutive builds. Release analysis is viable across ~4-5 recent
+  versions only — see ADR 0002.
+- **The app-metadata first entry never appeared.** The filter is kept but is
+  *unverified against production data* — it may be an XML-feed quirk. See ADR
+  0003.
+- **2500 is NOT a proven ceiling.** The run stopped at `max_pages = 10`, not at
+  a refusal from Apple; every page returned a full 50 and no storefront reported
+  end-of-data. Raising `max_pages` to 12 tests it for ~10 extra requests. See
+  ADR 0003.
+
 Single-source for the MVP is a deliberate, revisitable choice — see
 `docs/decisions/0001-single-source-mvp.md`.
 
