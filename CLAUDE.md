@@ -73,20 +73,28 @@ tests/             Fixture-based tests; no network required
 
 ## Data source notes
 
-Endpoint:
+**Shape of the source: one app, several storefronts.** The pipeline pulls the same
+app's reviews from multiple country storefronts and merges them into one corpus.
+Which app and which storefronts live in `config.toml`, not in code and not here —
+the app under analysis is expected to change.
+
+Apple's public customer-reviews RSS feed, no auth and no API key:
 
 ```
 https://itunes.apple.com/{country}/rss/customerreviews/page={n}/id={appId}/sortby=mostrecent/json
 ```
 
-- Up to 50 reviews per page; Apple serves roughly 10 pages, so ~500 per country max
-- Current target: Duolingo, App ID `570060128`, countries `us gb ca au in`
+- Up to 50 reviews per page; Apple serves roughly 10 pages, so ~500 per storefront max
 - **The first entry in a feed is often app metadata, not a review.** It has no
   `im:rating`. Filter for entries carrying both a rating and a review id.
 - When a feed holds a single entry, Apple returns `entry` as an object rather than a
   list. Handle both.
-- `created_at` is Apple's `updated` field. Apple does not expose original post time.
-  The name is a convenience; it means *last updated*.
+- A feed past the last page returns valid JSON with no `entry` key at all. That is
+  the normal end-of-data signal, not an error.
+- Apple can return 403 to a request with no `User-Agent`. Always send one.
+
+Single-source for the MVP is a deliberate, revisitable choice — see
+`docs/decisions/0001-single-source-mvp.md`.
 
 ## Review schema
 
@@ -97,9 +105,21 @@ Every review normalizes to exactly these fields:
 | `id` | Apple's review id; the dedupe key |
 | `source` | `apple_appstore` |
 | `country` | lowercase storefront code |
-| `rating` | int 1–5 |
+| `rating` | int 1-5 |
 | `title` | may be empty |
-| `body` | may be empty; real data is messy — emoji, newlines, other languages |
-| `app_version` | may be null on older reviews |
-| `created_at` | ISO 8601 string, see note above |
+| `body` | may be empty; real data is messy - emoji, newlines, other languages |
+| `app_version` | may be null on older reviews; **this is the time proxy, see below** |
+| `created_at` | ISO 8601 string; **not safe for trend analysis, see below** |
 | `raw` | the complete original entry, so later phases can recover fields we did not normalize |
+
+### `created_at` is not a creation time
+
+Apple's feed exposes only an `updated` timestamp. A review written in 2019 and edited
+last week reports last week. `created_at` is therefore **unsafe for any
+"complaints over time" or "trending since release" analysis** - such a chart would
+silently misdate an unknown fraction of the corpus.
+
+Use `app_version` as the time proxy for release-over-release analysis instead. It is
+recorded per review, it does not change after the fact, and app versions are ordered.
+Reviews with a null `app_version` are excluded from that analysis rather than guessed
+at. See `docs/decisions/0002-app-version-as-time-proxy.md`.

@@ -1,0 +1,138 @@
+{
+  "feed": {
+    "author": {
+      "name": {
+        "label": "iTunes Store"
+      },
+      "uri": {
+        "label": "http://www.apple.com/itunes/"
+      }
+    },
+    "updated": {
+      "label": "2026-09-14T03:11:02-07:00"
+    },
+    "rights": {
+      "label": "Copyright 2026 Apple Inc."
+    },
+    "title": {
+      "label": "iTunes Store: Customer Reviews"
+    },
+    "icon": {
+      "label": "http://itunes.apple.com/favicon.ico"
+    },
+    "link": [
+      {
+        "attributes": {
+          "rel": "alternate",
+          "type": "text/html",
+          "href": "https://apps.apple.com"
+        }
+      }
+    ],
+    "id": {
+      "label": "https://itunes.apple.com/us/rss/customerreviews/page=1/id=570060128/sortby=mostrecent/json"
+    },
+    "entry": [
+      {
+        "author": {
+          "uri": {
+            "label": "https://itunes.apple.com/us/reviews/id11234567893"
+          },
+          "name": {
+            "label": "ipad_person"
+          },
+          "label": ""
+        },
+        "im:rating": {
+          "label": "4"
+        },
+        "id": {
+          "label": "11234567893"
+        },
+        "title": {
+          "label": "Good but buggy"
+        },
+        "content": {
+          "label": "App crashes when I open the leaderboard on iPad. Otherwise fine.",
+          "attributes": {
+            "type": "text"
+          }
+        },
+        "link": {
+          "attributes": {
+            "rel": "related",
+            "href": "https://itunes.apple.com/us/review?id=570060128&type=Purple"
+          }
+        },
+        "im:voteSum": {
+          "label": "0"
+        },
+        "im:contentType": {
+          "attributes": {
+            "term": "Application",
+            "label": "Application"
+          }
+        },
+        "im:voteCount": {
+          "label": "0"
+        },
+        "updated": {
+          "label": "2026-09-12T11:45:00-07:00"
+        },
+        "im:version": {
+          "label": "7.23.0"
+        }
+      },
+      {
+        "author": {
+          "uri": {
+            "label": "https://itunes.apple.com/us/reviews/id11234567895"
+          },
+          "name": {
+            "label": "happy"
+          },
+          "label": ""
+        },
+        "im:rating": {
+          "label": "5"
+        },
+        "id": {
+          "label": "11234567895"
+        },
+        "title": {
+          "label": "Perfect"
+        },
+        "content": {
+          "label": "no notes",
+          "attributes": {
+            "type": "text"
+          }
+        },
+        "link": {
+          "attributes": {
+            "rel": "related",
+            "href": "https://itunes.apple.com/us/review?id=570060128&type=Purple"
+          }
+        },
+        "im:voteSum": {
+          "label": "0"
+        },
+        "im:contentType": {
+          "attributes": {
+            "term": "Application",
+            "label": "Application"
+          }
+        },
+        "im:voteCount": {
+          "label": "0"
+        },
+        "updated": {
+          "label": "2026-09-10T19:30:00-07:00"
+        },
+        "im:version": {
+          "label": "7.24.1"
+        }
+      }
+    ]
+  }
+}

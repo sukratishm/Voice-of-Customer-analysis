@@ -1,0 +1,37 @@
+# What this pipeline analyses.
+#
+# Swap the [app] block to point at a different app. Everything downstream —
+# cache paths, snapshot filenames — keys off these values, so a different app
+# gets its own cache and its own snapshot without colliding with the old one.
+
+[app]
+# Human-readable name, used in summaries.
+name = "Duolingo"
+# Short lowercase token used in filenames. No spaces.
+slug = "duolingo"
+# Apple's numeric App Store id. Find it in the App Store URL:
+# apps.apple.com/us/app/duolingo/id570060128  ->  570060128
+apple_app_id = "570060128"
+
+[source.apple]
+# Country storefronts to pull. Apple serves ~500 reviews per storefront,
+# so five storefronts is what gets us past 1000 total.
+countries = ["us", "gb", "ca", "au", "in"]
+
+# Apple serves roughly 10 pages of 50 reviews. Pagination stops early on its
+# own when a page comes back with no reviews, so this is just a safety ceiling.
+max_pages = 10
+
+# Politeness. Seconds to wait between actual network requests. Cache hits do
+# not wait, so a re-run is instant.
+request_delay_seconds = 1.0
+
+# Per-request timeout, seconds.
+request_timeout_seconds = 20.0
+
+# Retries for timeouts and 5xx responses. Backs off 2s, 4s, 8s between tries.
+# A 403 or 404 is a definitive answer and is never retried.
+max_retries = 3
+
+# Apple can return 403 to requests with no User-Agent. Identify honestly.
+user_agent = "voice-of-customer-analysis/0.1 (portfolio project; contact via GitHub)"

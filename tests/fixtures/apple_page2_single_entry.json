@@ -1,0 +1,86 @@
+{
+  "feed": {
+    "author": {
+      "name": {
+        "label": "iTunes Store"
+      },
+      "uri": {
+        "label": "http://www.apple.com/itunes/"
+      }
+    },
+    "updated": {
+      "label": "2026-09-14T03:11:02-07:00"
+    },
+    "rights": {
+      "label": "Copyright 2026 Apple Inc."
+    },
+    "title": {
+      "label": "iTunes Store: Customer Reviews"
+    },
+    "icon": {
+      "label": "http://itunes.apple.com/favicon.ico"
+    },
+    "link": [
+      {
+        "attributes": {
+          "rel": "alternate",
+          "type": "text/html",
+          "href": "https://apps.apple.com"
+        }
+      }
+    ],
+    "id": {
+      "label": "https://itunes.apple.com/us/rss/customerreviews/page=1/id=570060128/sortby=mostrecent/json"
+    },
+    "entry": {
+      "author": {
+        "uri": {
+          "label": "https://itunes.apple.com/us/reviews/id11234567894"
+        },
+        "name": {
+          "label": "quitter"
+        },
+        "label": ""
+      },
+      "im:rating": {
+        "label": "2"
+      },
+      "id": {
+        "label": "11234567894"
+      },
+      "title": {
+        "label": "Meh"
+      },
+      "content": {
+        "label": "Got boring after a while",
+        "attributes": {
+          "type": "text"
+        }
+      },
+      "link": {
+        "attributes": {
+          "rel": "related",
+          "href": "https://itunes.apple.com/us/review?id=570060128&type=Purple"
+        }
+      },
+      "im:voteSum": {
+        "label": "0"
+      },
+      "im:contentType": {
+        "attributes": {
+          "term": "Application",
+          "label": "Application"
+        }
+      },
+      "im:voteCount": {
+        "label": "0"
+      },
+      "updated": {
+        "label": "2026-09-11T08:00:00-07:00"
+      },
+      "im:version": {
+        "label": "7.22.5"
+      }
+    }
+  }
+}
